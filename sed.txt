@@ -1,6 +1,3 @@
-# sed
-Sed Commands
-
 ##FILE SPACING:
 
  # double space a file
@@ -395,26 +392,3 @@ it is heartening to know that GNU sed will let you reduce it to:
 
    sed '/AAA/b;/BBB/b;/CCC/b;d'      # or even
    sed '/AAA\|BBB\|CCC/b;d'
-
-In addition, remember that while many versions of sed accept a command
-like "/one/ s/RE1/RE2/", some do NOT allow "/one/! s/RE1/RE2/", which
-contains space before the 's'. Omit the space when typing the command.
-
-OPTIMIZING FOR SPEED: If execution speed needs to be increased (due to
-large input files or slow processors or hard disks), substitution will
-be executed more quickly if the "find" expression is specified before
-giving the "s/.../.../" instruction. Thus:
-
-   sed 's/foo/bar/g' filename         # standard replace command
-   sed '/foo/ s/foo/bar/g' filename   # executes more quickly
-   sed '/foo/ s//bar/g' filename      # shorthand sed syntax
-
-On line selection or deletion in which you only need to output lines
-from the first part of the file, a "quit" command (q) in the script
-will drastically reduce processing time for large files. Thus:
-
-   sed -n '45,50p' filename           # print line nos. 45-50 of a file
-   sed -n '51q;45,50p' filename       # same, but executes much faster
-
-
--------------------------------------------------------------------------
